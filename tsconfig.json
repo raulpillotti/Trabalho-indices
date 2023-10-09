@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["types/*"]
+    },
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "downlevelIteration": true,
+    "target": "es2017",
+    "jsx": "react",
+    "allowJs": true,
+    "checkJs": false,
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "allowUnreachableCode": false,
+    "strict": true,
+    "alwaysStrict": true,
+    // "skipLibCheck": true,
+    "lib": ["es2015", "dom", "es5", "scripthost"],
+    "outDir": "_build",
+    // "noEmit": true,
+        // "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": ["node_modules", "_build/**/*"]
+}
+
