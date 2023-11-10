@@ -3,10 +3,13 @@
     "csv-parser": "^3.0.0",
     "csv-writer": "^1.6.0",
     "fs": "^0.0.1-security",
+    "mongodb": "^6.2.0",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
     "@types/node": "^20.7.0"
   },
-  "scripts": {"start": "tsc && node _buid/main.js"}
+  "scripts": {
+    "start": "tsc && node _buid/main.js"
+  }
 }

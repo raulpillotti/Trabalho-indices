@@ -1,5 +1,7 @@
 import * as fs from 'fs';
 import * as csvParser from 'csv-parser';
+import { MongoClient, ObjectId } from 'mongodb';;
+
 
 //para a busca binária 
 interface HasKey {
@@ -311,3 +313,44 @@ function findInMemoryIndex2(target: ContentRating): Promise<RowData> | null {
     });
 
 }
+
+
+//atividade mongodb
+const url = 'mongodb://localhost:27017';
+const dbName = 'raul';
+const client = new MongoClient(url);
+
+// Insert (Create) Operation
+async function insertDocument(collectionName: string, document: any) {
+  const db = client.db(dbName);
+  const collection = db.collection(collectionName);
+  const result = await collection.insertOne(document);
+  console.log(`Inserted document with _id: ${result.insertedId}`);
+}
+
+// Read Operation
+async function findDocuments(collectionName: string, query: any = {}) {
+  const db = client.db(dbName);
+  const collection = db.collection(collectionName);
+  const documents = await collection.find(query).toArray();
+  console.log('Found the following documents:');
+  console.log(documents);
+}
+
+// Update Operation
+async function updateDocument(collectionName: string, filter: any, update: any) {
+  const db = client.db(dbName);
+  const collection = db.collection(collectionName);
+  const result = await collection.updateOne(filter, { $set: update });
+  console.log(`Matched ${result.matchedCount} document(s) and modified ${result.modifiedCount} document(s)`);
+}
+
+// Delete Operation
+async function deleteDocument(collectionName: string, filter: any) {
+  const db = client.db(dbName);
+  const collection = db.collection(collectionName);
+  const result = await collection.deleteOne(filter);
+  console.log(`Deleted ${result.deletedCount} document(s)`);
+}
+
+
